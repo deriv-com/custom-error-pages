@@ -106,47 +106,24 @@
 
         <h1>Access Denied</h1>
         <div class="error-message">
-            <p id="block-reason">We've detected unusual activity from your connection. This is a temporary security measure to protect our users and systems...</p>
+            <p>We’ve identified unusual activity from your connection, and your access has been temporarily blocked.</p>
         </div>
         
         <!-- Details Section -->
         <div class="details-container">
             <div class="detail">
-                <span class="detail-label">Ray ID:</span> Not Available
+                <span class="detail-label">Ray ID:</span> <span id="ray-id">::RAY_ID::</span>
             </div>
             <div class="detail">
-                <span class="detail-label">Your IP Address:</span> Not Available
-            </div>
-            <div class="detail">
-                <span class="detail-label">Reason:</span> Blocked by security systems.
+                <span class="detail-label">Your IP Address:</span> <span id="client-ip">::CLIENT_IP::</span>
             </div>
         </div>
 
         <!-- Action Links -->
         <div class="button-container">
-            <a href="https://app.deriv.com" title="Return to Homepage">Return to Homepage</a>
+            <a href="/" title="Return to Homepage">Return to Homepage</a>
             <button onclick="window.history.back();" title="Retry Access">Retry</button>
         </div>
     </div>
-
-    <script>
-        // Helper function to get query parameters from the URL
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-
-        // Populate dynamic fields with query parameters (or fallback defaults)
-        window.onload = function() {
-            const rayId = getQueryParam('ray') || 'Not Available';
-            const clientIp = getQueryParam('ip') || 'Not Available';
-            const reason = getQueryParam('reason') || 'Blocked by security systems.';
-
-            // Populate values in the HTML
-            document.getElementById('ray-id').textContent = rayId;
-            document.getElementById('client-ip').textContent = clientIp;
-            document.getElementById('block-reason-details').textContent = reason;
-        }
-    </script>
 </body>
 </html>
